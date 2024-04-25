@@ -33,15 +33,28 @@ function printHelp() {
 }
 
 function getWinner(move1, move2) {
-  // Your code here 
+  if (move1 === move2) { // tie
+    // console.log("You tie.\n");
+    // ties++;
+    return 0
+  }
+  else if (VALID_MOVES[move1].winsAgainst === move2) { // win
+    // console.log("You win!\n");
+    // wins++;
+    return 1
+  } else { // loss
+    // console.log("You lose...\n");
+    // losses++;
+    return -1
+  }
 }
 
 function getCPUMove() {
-  // Your code here 
+  // Your code here
 }
 
 function processMove(cmd, cpu) {
-  // Your code here 
+  // Your code here
 }
 
 /******************************* MAIN FUNCTION *******************************/
@@ -62,18 +75,18 @@ function promptInput(rl) {
       const cpu = validMoveKeys[randomIndex];
 
       console.log(`You pick ${cmd}, computer picks ${cpu}.`);
-
-      if (cmd === cpu) { // tie
-        console.log("You tie.\n");
-        ties++;
-      }
-      else if (VALID_MOVES[cmd].winsAgainst === cpu) { // win
-        console.log("You win!\n");
-        wins++;
-      } else { // loss
-        console.log("You lose...\n");
-        losses++;
-      }
+        getWinner(cmd,cpu)
+      // if (cmd === cpu) { // tie
+      //   console.log("You tie.\n");
+      //   ties++;
+      // }
+      // else if (VALID_MOVES[cmd].winsAgainst === cpu) { // win
+      //   console.log("You win!\n");
+      //   wins++;
+      // } else { // loss
+      //   console.log("You lose...\n");
+      //   losses++;
+      // }
     } else {
       console.log("\nInvalid command.\n");
       console.log("  Type 'r' for Rock");
