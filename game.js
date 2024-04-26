@@ -78,30 +78,12 @@ function promptInput(rl) {
       rl.close();
       return;
     } else if (VALID_MOVES[cmd]){
-      getCPUMove()
-
-      console.log(`You pick ${cmd}, computer picks ${cpu}.`);
-        getWinner(cmd,cpu)
-      // if (cmd === cpu) { // tie
-      //   console.log("You tie.\n");
-      //   ties++;
-      // }
-      // else if (VALID_MOVES[cmd].winsAgainst === cpu) { // win
-      //   console.log("You win!\n");
-      //   wins++;
-      // } else { // loss
-      //   console.log("You lose...\n");
-      //   losses++;
-      // }
+      processMove(cmd, getCPUMove())
+      getWinner(cmd, getCPUMove())
     } else {
       console.log("\nInvalid command.\n");
-      console.log("  Type 'r' for Rock");
-      console.log("  Type 'p' for Paper");
-      console.log("  Type 's' for Scissors");
-      console.log("  Type 'q' to quit");
-      console.log("  Type 'h' for a list of valid commands\n");
+      printHelp()
     }
-
     promptInput(rl);
   });
 }
@@ -113,12 +95,7 @@ function initializeGame() {
     output: process.stdout
   });
   console.log("Welcome to Rock/Paper/Scissors\n");
-  console.log("  Type 'r' for Rock");
-  console.log("  Type 'p' for Paper");
-  console.log("  Type 's' for Scissors");
-  console.log("  Type 'q' to quit");
-  console.log("  Type 'h' for a list of valid commands\n");
-
+  printHelp()
   promptInput(rl);
 }
 
