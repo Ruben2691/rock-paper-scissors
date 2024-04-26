@@ -51,7 +51,18 @@ function getCPUMove() {
 }
 
 function processMove(cmd, cpu) {
-  // Your code here
+  console.log(`You pick ${cmd}, computer picks ${cpu}.`);
+  if(getWinner(cmd, cpu) === 1) {
+    console.log("You win!\n");
+    wins++;
+  }else if(getWinner(cmd, cpu) === -1){
+    console.log("You lose...\n");
+    losses++;
+  }else{
+    console.log("You tie.\n");
+    ties++;
+  }
+
 }
 
 /******************************* MAIN FUNCTION *******************************/
