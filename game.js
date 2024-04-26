@@ -34,23 +34,20 @@ function printHelp() {
 
 function getWinner(move1, move2) {
   if (move1 === move2) { // tie
-    // console.log("You tie.\n");
-    // ties++;
     return 0
   }
   else if (VALID_MOVES[move1].winsAgainst === move2) { // win
-    // console.log("You win!\n");
-    // wins++;
     return 1
   } else { // loss
-    // console.log("You lose...\n");
-    // losses++;
     return -1
   }
 }
 
 function getCPUMove() {
-  // Your code here
+  const validMoveKeys = Object.keys(VALID_MOVES);
+  const randomIndex = Math.floor(Math.random() * validMoveKeys.length);
+  const cpu = validMoveKeys[randomIndex];
+  return cpu
 }
 
 function processMove(cmd, cpu) {
@@ -70,9 +67,7 @@ function promptInput(rl) {
       rl.close();
       return;
     } else if (VALID_MOVES[cmd]){
-      const validMoveKeys = Object.keys(VALID_MOVES);
-      const randomIndex = Math.floor(Math.random() * validMoveKeys.length);
-      const cpu = validMoveKeys[randomIndex];
+      getCPUMove()
 
       console.log(`You pick ${cmd}, computer picks ${cpu}.`);
         getWinner(cmd,cpu)
